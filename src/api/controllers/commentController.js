@@ -75,17 +75,17 @@ exports.updateAComment = (req, res) => {
     })
 }
 
-exports.deleteAComment = (req, res) => {
-    Comment.findByIdAndRemove(req.params.comment_id, (error) => {
-        if (error) {
-            res.status(401);
-            console.log(error);
-            res.json({ message: "Reqûete invalide." });
-        }
-        else {
-            res.status(200);
-            res.json({ message: "Commentaire supprimé" });
-        }
+// exports.deleteAComment = (req, res) => {
+//     Comment.findByIdAndRemove(req.params.comment_id, (error) => {
+//         if (error) {
+//             res.status(401);
+//             console.log(error);
+//             res.json({ message: "Reqûete invalide." });
+//         }
+//         else {
+//             res.status(200);
+//             res.json({ message: "Commentaire supprimé" });
+//         }
 
-    })
-}
+//     })
+// }

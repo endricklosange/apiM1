@@ -7,6 +7,6 @@ server.route("/posts")
 
 server.route("/posts/:post_id") // req.params.post_id
 .get(postController.getAPost)
-.put(postController.updateAPost)
-.delete(postController.deleteApost);
+.put(postController.updateAPost);
+// .delete(postController.deleteApost);
 }
