@@ -1,11 +1,9 @@
 const jwt = require("jsonwebtoken");
-
 const jwtKey = process.env.JWT_KEY;
 
 exports.verifyToken = async(req, res, next) => {
     try {
         const token = req.headers['authorization'];
-
         if(token !== undefined) {
             const payload = await new Promise((resolve, reject) => {
                 jwt.verify(token, jwtKey, (error, decoded) => {
@@ -16,10 +14,8 @@ exports.verifyToken = async(req, res, next) => {
                     }
                 });
             });
-
             req.user = payload;
             next();
-            
         } else {
             res.status(403).json({message: "Accès interdit: token manquant"});
         }

@@ -1,4 +1,5 @@
 const User = require("../models/userModel");
+const jwt = require("jsonwebtoken");
 
 exports.userRegister = async (req, res) => {
     try {
@@ -25,8 +26,7 @@ exports.userLogin = async (req, res) => {
                 email: user.email,
                 role: "admin"
             };
-
-            const token = await jwt.sign(userData, process.env.JWT_KEY, { expiresIn: "30 days"});
+            const token = await jwt.sign(userData, process.env.JWT_KEY, { expiresIn: "10h"});
             res.status(200).json({token});
 
         } else {
